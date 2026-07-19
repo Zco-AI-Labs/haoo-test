@@ -5,27 +5,33 @@
   },
   "children": [
     {
-      "type": "text-input",
+      "type": "input",
       "props": {
-        "id": "full_name",
+        "name": "full_name",
         "label": "Contact Person Full Name",
-        "placeholder": "Alex Doe"
+        "placeholder": "Alex Doe",
+        "inputType": "text",
+        "required": true
       }
     },
     {
-      "type": "text-input",
+      "type": "input",
       "props": {
-        "id": "email_address",
+        "name": "email_address",
         "label": "Contact Email Address",
-        "placeholder": "alex@apex.com"
+        "placeholder": "alex@apex.com",
+        "inputType": "text",
+        "required": true
       }
     },
     {
       "type": "button",
       "props": {
-        "id": "submit_personal",
         "label": "Submit Contact Details",
-        "variant": "primary"
+        "actionUrl": "agent://submit_personal",
+        "styling": {
+          "colorTheme": "pink"
+        }
       }
     }
   ]

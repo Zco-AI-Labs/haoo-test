@@ -5,56 +5,68 @@
   },
   "children": [
     {
-      "type": "text-input",
+      "type": "input",
       "props": {
-        "id": "org_name",
+        "name": "org_name",
         "label": "Organization Legal Name",
-        "placeholder": "Apex Innovations"
+        "placeholder": "Apex Innovations",
+        "inputType": "text",
+        "required": true
       }
     },
     {
-      "type": "textarea",
+      "type": "input",
       "props": {
-        "id": "org_description",
+        "name": "org_description",
         "label": "Brief Description",
-        "placeholder": "Robotic research and development"
+        "placeholder": "Robotic research and development",
+        "inputType": "text",
+        "multiline": true,
+        "required": true
       }
     },
     {
-      "type": "text-input",
+      "type": "input",
       "props": {
-        "id": "org_email",
+        "name": "org_email",
         "label": "Organization Email",
-        "placeholder": "info@apex.com"
+        "placeholder": "info@apex.com",
+        "inputType": "text",
+        "required": true
       }
     },
     {
-      "type": "text-input",
+      "type": "input",
       "props": {
-        "id": "org_phone",
+        "name": "org_phone",
         "label": "Organization Phone",
-        "placeholder": "555-0199"
+        "placeholder": "555-0199",
+        "inputType": "text",
+        "required": true
       }
     },
     {
-      "type": "dropdown",
+      "type": "select",
       "props": {
-        "id": "user_position",
+        "name": "user_position",
         "label": "Your Position/Title in Organization",
         "options": [
           {"label": "President", "value": "President"},
           {"label": "CEO", "value": "CEO"},
           {"label": "CFO", "value": "CFO"},
           {"label": "IT Manager", "value": "IT Manager"}
-        ]
+        ],
+        "required": true
       }
     },
     {
       "type": "button",
       "props": {
-        "id": "submit_org_details",
         "label": "Submit Details",
-        "variant": "primary"
+        "actionUrl": "agent://submit_org_details",
+        "styling": {
+          "colorTheme": "indigo"
+        }
       }
     }
   ]

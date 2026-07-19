@@ -5,19 +5,23 @@
   },
   "children": [
     {
-      "type": "text-input",
+      "type": "input",
       "props": {
-        "id": "mobile_number",
+        "name": "mobile_number",
         "label": "Personal Contact Mobile Number",
-        "placeholder": "555-0199"
+        "placeholder": "555-0199",
+        "inputType": "text",
+        "required": true
       }
     },
     {
       "type": "button",
       "props": {
-        "id": "submit_mobile",
         "label": "Check Account",
-        "variant": "primary"
+        "actionUrl": "agent://submit_mobile",
+        "styling": {
+          "colorTheme": "slate"
+        }
       }
     }
   ]

@@ -15,56 +15,68 @@ These standard Lego block widget configurations are saved inside the agent packa
   },
   "children": [
     {
-      "type": "text-input",
+      "type": "input",
       "props": {
-        "id": "org_name",
+        "name": "org_name",
         "label": "Organization Legal Name",
-        "placeholder": "Apex Innovations"
+        "placeholder": "Apex Innovations",
+        "inputType": "text",
+        "required": true
       }
     },
     {
-      "type": "textarea",
+      "type": "input",
       "props": {
-        "id": "org_description",
+        "name": "org_description",
         "label": "Brief Description",
-        "placeholder": "Robotic research and development"
+        "placeholder": "Robotic research and development",
+        "inputType": "text",
+        "multiline": true,
+        "required": true
       }
     },
     {
-      "type": "text-input",
+      "type": "input",
       "props": {
-        "id": "org_email",
+        "name": "org_email",
         "label": "Organization Email",
-        "placeholder": "info@apex.com"
+        "placeholder": "info@apex.com",
+        "inputType": "text",
+        "required": true
       }
     },
     {
-      "type": "text-input",
+      "type": "input",
       "props": {
-        "id": "org_phone",
+        "name": "org_phone",
         "label": "Organization Phone",
-        "placeholder": "555-0199"
+        "placeholder": "555-0199",
+        "inputType": "text",
+        "required": true
       }
     },
     {
-      "type": "dropdown",
+      "type": "select",
       "props": {
-        "id": "user_position",
+        "name": "user_position",
         "label": "Your Position/Title in Organization",
         "options": [
           {"label": "President", "value": "President"},
           {"label": "CEO", "value": "CEO"},
           {"label": "CFO", "value": "CFO"},
           {"label": "IT Manager", "value": "IT Manager"}
-        ]
+        ],
+        "required": true
       }
     },
     {
       "type": "button",
       "props": {
-        "id": "submit_org_details",
         "label": "Submit Details",
-        "variant": "primary"
+        "actionUrl": "agent://submit_org_details",
+        "styling": {
+          "colorTheme": "indigo"
+        }
       }
     }
   ]
@@ -86,19 +98,23 @@ These standard Lego block widget configurations are saved inside the agent packa
   },
   "children": [
     {
-      "type": "text-input",
+      "type": "input",
       "props": {
-        "id": "mobile_number",
+        "name": "mobile_number",
         "label": "Personal Contact Mobile Number",
-        "placeholder": "555-0199"
+        "placeholder": "555-0199",
+        "inputType": "text",
+        "required": true
       }
     },
     {
       "type": "button",
       "props": {
-        "id": "submit_mobile",
         "label": "Check Account",
-        "variant": "primary"
+        "actionUrl": "agent://submit_mobile",
+        "styling": {
+          "colorTheme": "slate"
+        }
       }
     }
   ]
@@ -120,19 +136,23 @@ These standard Lego block widget configurations are saved inside the agent packa
   },
   "children": [
     {
-      "type": "text-input",
+      "type": "input",
       "props": {
-        "id": "otp_code",
+        "name": "otp_code",
         "label": "Enter 6-digit Verification Code",
-        "placeholder": "123456"
+        "placeholder": "123456",
+        "inputType": "text",
+        "required": true
       }
     },
     {
       "type": "button",
       "props": {
-        "id": "submit_otp",
         "label": "Verify OTP",
-        "variant": "primary"
+        "actionUrl": "agent://submit_otp",
+        "styling": {
+          "colorTheme": "blue"
+        }
       }
     }
   ]
@@ -154,27 +174,33 @@ These standard Lego block widget configurations are saved inside the agent packa
   },
   "children": [
     {
-      "type": "text-input",
+      "type": "input",
       "props": {
-        "id": "full_name",
+        "name": "full_name",
         "label": "Contact Person Full Name",
-        "placeholder": "Alex Doe"
+        "placeholder": "Alex Doe",
+        "inputType": "text",
+        "required": true
       }
     },
     {
-      "type": "text-input",
+      "type": "input",
       "props": {
-        "id": "email_address",
+        "name": "email_address",
         "label": "Contact Email Address",
-        "placeholder": "alex@apex.com"
+        "placeholder": "alex@apex.com",
+        "inputType": "text",
+        "required": true
       }
     },
     {
       "type": "button",
       "props": {
-        "id": "submit_personal",
         "label": "Submit Contact Details",
-        "variant": "primary"
+        "actionUrl": "agent://submit_personal",
+        "styling": {
+          "colorTheme": "pink"
+        }
       }
     }
   ]
@@ -190,27 +216,57 @@ These standard Lego block widget configurations are saved inside the agent packa
 ```json
 // app/ui/widgets/org_summary_card.json
 {
-  "type": "card",
+  "type": "container",
   "props": {
-    "className": "p-4 bg-green-50 rounded-lg border border-green-200"
+    "className": "p-4 bg-green-50 rounded-lg border border-green-200 flex flex-col gap-3"
   },
   "children": [
     {
-      "type": "title",
+      "type": "text",
       "props": {
-        "text": "Organization Summary Card"
+        "text": "Organization Summary Card",
+        "className": "text-lg font-bold text-green-800"
       }
     },
     {
-      "type": "metadata-grid",
+      "type": "container",
       "props": {
-        "items": [
-          {"label": "Legal Name", "id": "summary_name"},
-          {"label": "Description", "id": "summary_description"},
-          {"label": "Org Email", "id": "summary_email"},
-          {"label": "Org Phone", "id": "summary_phone"}
-        ]
-      }
+        "className": "grid grid-cols-2 gap-x-4 gap-y-2"
+      },
+      "children": [
+        {
+          "type": "container",
+          "props": { "className": "flex flex-col" },
+          "children": [
+            { "type": "text", "props": { "text": "Legal Name", "className": "text-xs text-slate-500 font-medium" } },
+            { "type": "text", "props": { "text": "{{summary_name}}", "className": "text-sm text-slate-800 font-semibold" } }
+          ]
+        },
+        {
+          "type": "container",
+          "props": { "className": "flex flex-col" },
+          "children": [
+            { "type": "text", "props": { "text": "Description", "className": "text-xs text-slate-500 font-medium" } },
+            { "type": "text", "props": { "text": "{{summary_description}}", "className": "text-sm text-slate-800 font-semibold" } }
+          ]
+        },
+        {
+          "type": "container",
+          "props": { "className": "flex flex-col" },
+          "children": [
+            { "type": "text", "props": { "text": "Org Email", "className": "text-xs text-slate-500 font-medium" } },
+            { "type": "text", "props": { "text": "{{summary_email}}", "className": "text-sm text-slate-800 font-semibold" } }
+          ]
+        },
+        {
+          "type": "container",
+          "props": { "className": "flex flex-col" },
+          "children": [
+            { "type": "text", "props": { "text": "Org Phone", "className": "text-xs text-slate-500 font-medium" } },
+            { "type": "text", "props": { "text": "{{summary_phone}}", "className": "text-sm text-slate-800 font-semibold" } }
+          ]
+        }
+      ]
     }
   ]
 }
