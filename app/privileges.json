@@ -9,7 +9,8 @@
         "check_mobile_exist",
         "send_mobile_otp",
         "verify_mobile_otp",
-        "associate_contact_and_alert"
+        "associate_contact_and_alert",
+        "show_org_details_form"
       ]
     }
   }
